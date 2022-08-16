@@ -1,7 +1,6 @@
 src
 hasura
 .eslintrc
-.gitignore
 .npmignore
 codegen.yml
 node_modules
