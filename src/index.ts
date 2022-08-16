@@ -6,6 +6,7 @@ import {
   AdapterUser,
   VerificationToken,
 } from "next-auth/adapters";
+
 import { getSdk } from "./generated/graphql";
 
 type HasuraAdapterArgs = {

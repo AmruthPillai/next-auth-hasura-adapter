@@ -1,6 +1,6 @@
 {
   "name": "next-auth-hasura-adapter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is the Hasura Adapter for next-auth. This package can only be used in conjunction with the primary next-auth package. It is not a standalone package.",
   "private": false,
   "publishConfig": {
@@ -44,6 +44,7 @@
     "encoding": "^0.1.13",
     "eslint": "^8.22.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "node-fetch": "^3.2.10",
     "prettier": "^2.7.1",
     "tsc-watch": "^5.0.3",

@@ -10,6 +10,7 @@ specifiers:
   encoding: ^0.1.13
   eslint: ^8.22.0
   eslint-plugin-prettier: ^4.2.1
+  eslint-plugin-simple-import-sort: ^7.0.0
   graphql: ^16.5.0
   graphql-request: ^4.3.0
   graphql-tag: ^2.12.6
@@ -37,6 +38,7 @@ devDependencies:
   encoding: 0.1.13
   eslint: 8.22.0
   eslint-plugin-prettier: 4.2.1_2xd4q2tc5cqa5as7uugqhp6oue
+  eslint-plugin-simple-import-sort: 7.0.0_eslint@8.22.0
   node-fetch: 3.2.10
   prettier: 2.7.1
   tsc-watch: 5.0.3_typescript@4.7.4
@@ -2093,6 +2095,14 @@ packages:
       eslint: 8.22.0
       prettier: 2.7.1
       prettier-linter-helpers: 1.0.0
+    dev: true
+
+  /eslint-plugin-simple-import-sort/7.0.0_eslint@8.22.0:
+    resolution: {integrity: sha512-U3vEDB5zhYPNfxT5TYR7u01dboFZp+HNpnGhkDB2g/2E4wZ/g1Q9Ton8UwCLfRV9yAKyYqDh62oHOamvkFxsvw==}
+    peerDependencies:
+      eslint: '>=5.0.0'
+    dependencies:
+      eslint: 8.22.0
     dev: true
 
   /eslint-scope/5.1.1:
