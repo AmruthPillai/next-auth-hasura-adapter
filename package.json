@@ -1,0 +1,48 @@
+{
+  "name": "next-auth-hasura-adapter",
+  "version": "1.0.0",
+  "description": "This is the Hasura Adapter for next-auth. This package can only be used in conjunction with the primary next-auth package. It is not a standalone package.",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "tsc-watch",
+    "build": "tsc",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "prepublish": "tsc"
+  },
+  "keywords": [
+    "next.js",
+    "next-auth",
+    "hasura"
+  ],
+  "author": "Amruth Pillai <im.amruth@gmail.com>",
+  "license": "ISC",
+  "peerDependencies": {
+    "graphql": "^16.5.0",
+    "graphql-request": "^4.3.0",
+    "graphql-tag": "^2.12.6",
+    "hasura-cli": "^2.9.0",
+    "next-auth": "^4.10.3"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.11.6",
+    "@graphql-codegen/typescript": "2.7.3",
+    "@graphql-codegen/typescript-graphql-request": "^4.5.3",
+    "@graphql-codegen/typescript-operations": "^2.5.3",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "encoding": "^0.1.13",
+    "eslint": "^8.22.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "node-fetch": "^3.2.10",
+    "prettier": "^2.7.1",
+    "tsc-watch": "^5.0.3",
+    "typescript": "^4.7.4"
+  }
+}

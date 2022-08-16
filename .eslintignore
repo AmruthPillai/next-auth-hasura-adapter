@@ -1,0 +1,4 @@
+dist
+hasura
+node_modules
+src/generated
