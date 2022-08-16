@@ -6,16 +6,16 @@
    Open Source. Full Stack. Own Your Data.
    </p>
    <p align="center" style="align: center;">
-      <a href="https://www.npmjs.com/package/next-auth-hasura-adapter" target="_blank"><img src="https://img.shields.io/bundlephobia/minzip/next-auth-hasura-adapter/next" alt="Bundle Size"/></a>
-      <a href="https://www.npmjs.com/package/next-auth-hasura-adapter" target="_blank"><img src="https://img.shields.io/npm/v/next-auth-hasura-adapter/next" alt="next-auth-hasura-adapter Version" /></a>
+      <a href="https://www.npmjs.com/package/next-auth-hasura-adapter" target="_blank"><img src="https://img.shields.io/bundlephobia/minzip/next-auth-hasura-adapter" alt="Bundle Size"/></a>
+      <a href="https://www.npmjs.com/package/next-auth-hasura-adapter" target="_blank"><img src="https://img.shields.io/npm/v/next-auth-hasura-adapter" alt="Package Version" /></a>
    </p>
 </p>
 
 ## Overview
 
-This is the Prisma Adapter for [`next-auth`](https://next-auth.js.org). This package can only be used in conjunction with the primary `next-auth` package. It is not a standalone package.
+This is the Hasura Adapter for [`next-auth`](https://next-auth.js.org). This package can only be used in conjunction with the primary `next-auth` package. It is not a standalone package.
 
-You can find the Prisma schema in the docs at [next-auth.js.org/adapters/prisma](https://next-auth.js.org/adapters/prisma).
+You can find the Hasura + NextAuth integration docs at [hasura.io/learn/graphql/hasura-authentication/integrations/nextjs-auth](https://hasura.io/learn/graphql/hasura-authentication/integrations/nextjs-auth/).
 
 ## Getting Started
 

@@ -1,6 +1,6 @@
 {
   "name": "next-auth-hasura-adapter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is the Hasura Adapter for next-auth. This package can only be used in conjunction with the primary next-auth package. It is not a standalone package.",
   "private": false,
   "publishConfig": {
