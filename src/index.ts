@@ -14,24 +14,20 @@ type HasuraAdapterArgs = {
   adminSecret: string;
 };
 
-const dateTransformer = <T extends { [key: string]: unknown }>(
+const transformDate = <T extends { [key: string]: unknown }>(
   object: T | null | undefined,
-  keys?: (keyof T)[]
-): T | null | undefined => {
+  key: keyof T
+) => {
   if (!object) return;
 
-  Object.entries(object).reduce(
-    (acc: Record<string, unknown>, [key, value]) => {
-      if (keys && keys.includes(key)) {
-        acc[key] = new Date(value as string);
-      } else {
-        acc[key] = value;
-      }
+  if (object[key]) {
+    return {
+      ...object,
+      [key]: new Date(object[key] as string),
+    };
+  }
 
-      return acc;
-    },
-    {}
-  );
+  return object;
 };
 
 export const HasuraAdapter = ({
@@ -50,19 +46,19 @@ export const HasuraAdapter = ({
     // User
     createUser: async (data) => {
       const res = await sdk.CreateUser({ data });
-      const user = dateTransformer(res?.insert_users_one, ["emailVerified"]);
+      const user = transformDate(res?.insert_users_one, "emailVerified");
 
       return user as AdapterUser;
     },
     getUser: async (id) => {
       const res = await sdk.GetUser({ id });
-      const user = dateTransformer(res?.users_by_pk, ["emailVerified"]);
+      const user = transformDate(res?.users_by_pk, "emailVerified");
 
       return user as AdapterUser;
     },
     getUserByEmail: async (email) => {
       const res = await sdk.GetUsers({ where: { email: { _eq: email } } });
-      const user = dateTransformer(res?.users?.[0], ["emailVerified"]);
+      const user = transformDate(res?.users?.[0], "emailVerified");
 
       if (!user) return null;
 
@@ -77,7 +73,7 @@ export const HasuraAdapter = ({
           },
         },
       });
-      const user = dateTransformer(res?.users?.[0], ["emailVerified"]);
+      const user = transformDate(res?.users?.[0], "emailVerified");
 
       if (!user) return null;
 
@@ -85,27 +81,27 @@ export const HasuraAdapter = ({
     },
     updateUser: async ({ id, ...data }) => {
       const res = await sdk.UpdateUser({ id, data });
-      const user = dateTransformer(res?.update_users_by_pk, ["emailVerified"]);
+      const user = transformDate(res?.update_users_by_pk, "emailVerified");
 
       return user as AdapterUser;
     },
     deleteUser: async (id) => {
       const res = await sdk.DeleteUser({ id });
-      const user = dateTransformer(res?.delete_users_by_pk, ["emailVerified"]);
+      const user = transformDate(res?.delete_users_by_pk, "emailVerified");
 
       return user as AdapterUser;
     },
     // Session
     createSession: async (data) => {
       const res = await sdk.CreateSession({ data });
-      const session = dateTransformer(res?.insert_sessions_one, ["expires"]);
+      const session = transformDate(res?.insert_sessions_one, "expires");
 
       return session as AdapterSession;
     },
     getSessionAndUser: async (sessionToken) => {
       const res = await sdk.GetSession({ sessionToken });
-      const session = dateTransformer(res?.sessions?.[0], ["expires"]);
-      const user = dateTransformer(session?.user, ["emailVerified"]);
+      const session = transformDate(res?.sessions?.[0], "expires");
+      const user = transformDate(session?.user, "emailVerified");
 
       return {
         session: session as AdapterSession,
@@ -114,9 +110,10 @@ export const HasuraAdapter = ({
     },
     updateSession: async ({ sessionToken, ...data }) => {
       const res = await sdk.UpdateSession({ sessionToken, data });
-      const session = dateTransformer(res?.update_sessions?.returning?.[0], [
-        "expires",
-      ]);
+      const session = transformDate(
+        res?.update_sessions?.returning?.[0],
+        "expires"
+      );
 
       if (!session) return;
 
@@ -124,9 +121,10 @@ export const HasuraAdapter = ({
     },
     deleteSession: async (sessionToken) => {
       const res = await sdk.DeleteSession({ sessionToken });
-      const session = dateTransformer(res?.delete_sessions?.returning?.[0], [
-        "expires",
-      ]);
+      const session = transformDate(
+        res?.delete_sessions?.returning?.[0],
+        "expires"
+      );
 
       if (!session) return;
 
@@ -150,18 +148,18 @@ export const HasuraAdapter = ({
     // Verification Token
     createVerificationToken: async (data) => {
       const res = await sdk.CreateVerificationToken({ data });
-      const verificationToken = dateTransformer(
+      const verificationToken = transformDate(
         res?.insert_verification_tokens_one,
-        ["expires"]
+        "expires"
       );
 
       return verificationToken as VerificationToken;
     },
     useVerificationToken: async ({ identifier, token }) => {
       const res = await sdk.DeleteVerificationToken({ identifier, token });
-      const verificationToken = dateTransformer(
+      const verificationToken = transformDate(
         res?.delete_verification_tokens?.returning?.[0],
-        ["expires"]
+        "expires"
       );
 
       if (!verificationToken) return null;
