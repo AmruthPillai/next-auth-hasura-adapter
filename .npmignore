@@ -1,8 +1,10 @@
 src
 hasura
+.eslintrc
 .gitignore
 .npmignore
 codegen.yml
 node_modules
+.eslintignore
 tsconfig.json
 docker-compose.yaml
