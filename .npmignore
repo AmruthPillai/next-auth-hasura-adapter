@@ -2,7 +2,6 @@ src
 hasura
 .eslintrc
 .npmignore
-codegen.yml
 node_modules
 .eslintignore
 tsconfig.json
