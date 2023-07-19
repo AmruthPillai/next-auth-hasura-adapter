@@ -1,7 +1,7 @@
 import { GraphQLClient } from "graphql-request";
-import { Account } from "next-auth";
 import {
   Adapter,
+  AdapterAccount,
   AdapterSession,
   AdapterUser,
   VerificationToken,
@@ -16,7 +16,7 @@ type HasuraAdapterArgs = {
 
 const transformDate = <T extends { [key: string]: unknown }>(
   object: T | null | undefined,
-  key: keyof T
+  key: keyof T,
 ) => {
   if (!object) return;
 
@@ -112,7 +112,7 @@ export const HasuraAdapter = ({
       const res = await sdk.UpdateSession({ sessionToken, data });
       const session = transformDate(
         res?.update_sessions?.returning?.[0],
-        "expires"
+        "expires",
       );
 
       if (!session) return;
@@ -123,7 +123,7 @@ export const HasuraAdapter = ({
       const res = await sdk.DeleteSession({ sessionToken });
       const session = transformDate(
         res?.delete_sessions?.returning?.[0],
-        "expires"
+        "expires",
       );
 
       if (!session) return;
@@ -135,7 +135,7 @@ export const HasuraAdapter = ({
       const res = await sdk.CreateAccount({ data });
       const account = res?.insert_accounts_one;
 
-      return account as Account;
+      return account as AdapterAccount;
     },
     unlinkAccount: async ({ providerAccountId, provider }) => {
       const res = await sdk.DeleteAccount({ provider, providerAccountId });
@@ -143,14 +143,14 @@ export const HasuraAdapter = ({
 
       if (!account) return;
 
-      return account as Account;
+      return account as AdapterAccount;
     },
     // Verification Token
     createVerificationToken: async (data) => {
       const res = await sdk.CreateVerificationToken({ data });
       const verificationToken = transformDate(
         res?.insert_verification_tokens_one,
-        "expires"
+        "expires",
       );
 
       return verificationToken as VerificationToken;
@@ -159,7 +159,7 @@ export const HasuraAdapter = ({
       const res = await sdk.DeleteVerificationToken({ identifier, token });
       const verificationToken = transformDate(
         res?.delete_verification_tokens?.returning?.[0],
-        "expires"
+        "expires",
       );
 
       if (!verificationToken) return null;
