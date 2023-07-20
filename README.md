@@ -123,4 +123,4 @@ We're open to all community contributions! If you'd like to contribute in any wa
 
 ## License
 
-ISC
+MIT
