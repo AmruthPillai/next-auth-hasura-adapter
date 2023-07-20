@@ -26,9 +26,10 @@
     "hasura"
   ],
   "author": "Amruth Pillai <im.amruth@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "graphql": "^16.7.1",
+    "graphql-tag": "^2.12.6",
     "graphql-request": "^6.1.0",
     "next-auth": "^4.22.1"
   },
@@ -37,12 +38,12 @@
     "@graphql-codegen/typescript": "4.0.1",
     "@graphql-codegen/typescript-graphql-request": "5.0.0",
     "@graphql-codegen/typescript-operations": "4.0.1",
-    "@typescript-eslint/eslint-plugin": "6.0.0",
-    "@typescript-eslint/parser": "6.0.0",
-    "eslint": "8.44.0",
+    "@typescript-eslint/eslint-plugin": "6.1.0",
+    "@typescript-eslint/parser": "6.1.0",
+    "eslint": "8.45.0",
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-simple-import-sort": "10.0.0",
-    "hasura-cli": "2.29.1",
+    "hasura-cli": "2.30.0",
     "prettier": "3.0.0",
     "tsc-watch": "6.0.4",
     "typescript": "5.1.6"
